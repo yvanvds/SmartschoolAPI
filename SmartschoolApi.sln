@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartschoolApi", "SmartschoolApi\SmartschoolApi.csproj", "{970EBA52-DF3C-480C-9474-D55D27E80F59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractAccountApi", "..\AbstractAccountApi\AbstractAccountApi\AbstractAccountApi.csproj", "{3D771CCF-96A7-4FFA-82E5-4BA9D870DCBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolTests", "SmartSchoolTests\SmartSchoolTests.csproj", "{477CD9FA-B2BF-4334-9414-E66CC5CFE6CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{970EBA52-DF3C-480C-9474-D55D27E80F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{970EBA52-DF3C-480C-9474-D55D27E80F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{970EBA52-DF3C-480C-9474-D55D27E80F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D771CCF-96A7-4FFA-82E5-4BA9D870DCBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D771CCF-96A7-4FFA-82E5-4BA9D870DCBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D771CCF-96A7-4FFA-82E5-4BA9D870DCBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D771CCF-96A7-4FFA-82E5-4BA9D870DCBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477CD9FA-B2BF-4334-9414-E66CC5CFE6CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477CD9FA-B2BF-4334-9414-E66CC5CFE6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477CD9FA-B2BF-4334-9414-E66CC5CFE6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477CD9FA-B2BF-4334-9414-E66CC5CFE6CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
