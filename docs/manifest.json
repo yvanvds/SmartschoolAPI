@@ -1,0 +1,1566 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/yvan/source/school/SmartschoolApi/SmartschoolApi",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "yp4hGpAtGytQLO7NPO88NQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "gK9qCtiK3pPWvqBQOTaebA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "6T6+dQiYugJlqon+md8XdA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Account.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Account.html",
+          "hash": "g4vZ1I8fJs9yx8t4AjeHGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Accounts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Accounts.html",
+          "hash": "2NrSqd0JmC5MpCSb83DmWw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Connector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Connector.html",
+          "hash": "4kmB/jArjEoErQUJQPNaGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Group.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Group.html",
+          "hash": "5bv4z92cmJ8LoGfY6zvylg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.GroupManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.GroupManager.html",
+          "hash": "wSv9zFXfR/9o50ERZiBNPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.V3Service.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.V3Service.html",
+          "hash": "7NSeFD3NpVTkN15McU6jTA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.addCourseCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.addCourseCompletedEventArgs.html",
+          "hash": "t/3itZdc+dpQlOPbagLPsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.addCourseCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.addCourseCompletedEventHandler.html",
+          "hash": "iAOoAlz3EQYmfB7WNcPotQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.addCourseStudentsCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.addCourseStudentsCompletedEventArgs.html",
+          "hash": "g4SZbJpFTwLgi09WlR+SWQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.addCourseStudentsCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.addCourseStudentsCompletedEventHandler.html",
+          "hash": "Viz83ennl5wNYrZSeWfavw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.addCourseTeacherCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.addCourseTeacherCompletedEventArgs.html",
+          "hash": "V/1EGtp9BPgVnqs8YPTxDA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.addCourseTeacherCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.addCourseTeacherCompletedEventHandler.html",
+          "hash": "aGneCJSxhYTkemIMfeSTlg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.changeGroupOwnersCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.changeGroupOwnersCompletedEventArgs.html",
+          "hash": "eOEs467ldxPJF98nR9Wk9Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.changeGroupOwnersCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.changeGroupOwnersCompletedEventHandler.html",
+          "hash": "RULVjSfQ5vZL97rvKJ9EHQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.changeInternNumberCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.changeInternNumberCompletedEventArgs.html",
+          "hash": "DpOGSL/WUoE9obeVqc8v/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.changeInternNumberCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.changeInternNumberCompletedEventHandler.html",
+          "hash": "uQ++cF38ajuq724cIFZWzA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.changeUsernameCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.changeUsernameCompletedEventArgs.html",
+          "hash": "JSojkRG7ZWcc/HZV8obIew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.changeUsernameCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.changeUsernameCompletedEventHandler.html",
+          "hash": "RpuS4GK2Z3VE3YyBLr0CCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.checkStatusCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.checkStatusCompletedEventArgs.html",
+          "hash": "PZDhqHMrGUl48RvT3QAm1g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.checkStatusCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.checkStatusCompletedEventHandler.html",
+          "hash": "qEMSlX73cz6cG4D5hHn8Uw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.clearGroupCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.clearGroupCompletedEventArgs.html",
+          "hash": "oPbDYRpMFvD2bVLsj3rOiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.clearGroupCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.clearGroupCompletedEventHandler.html",
+          "hash": "W16zIwdHw9AuEyeYNlgESw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventArgs.html",
+          "hash": "iVf7Gw8Qau3lQgBe1YBuew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventHandler.html",
+          "hash": "4VC3251ePACaagnJisTopQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.delClassCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.delClassCompletedEventArgs.html",
+          "hash": "euw8Nlx1NLGKiTDJwuDZyw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.delClassCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.delClassCompletedEventHandler.html",
+          "hash": "PkE61I9RqdALwLHnMK2NpQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.delUserCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.delUserCompletedEventArgs.html",
+          "hash": "KXvwmiAd6C9YZlwdPxRjsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.delUserCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.delUserCompletedEventHandler.html",
+          "hash": "nfnryVqHI2+hD1q7IwupZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.forcePasswordResetCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.forcePasswordResetCompletedEventArgs.html",
+          "hash": "tCgnZzlkkvYglKOLO2dyLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.forcePasswordResetCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.forcePasswordResetCompletedEventHandler.html",
+          "hash": "YpHFfB/0xdBbNI9cICQiEg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventArgs.html",
+          "hash": "I+bBeJeqhGjbQj5acqUxUw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventHandler.html",
+          "hash": "EBohhRJQhE0/MTz3Sfx/Xw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsByDateCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsByDateCompletedEventArgs.html",
+          "hash": "lM43p8fsTMlcxsOsoIBCCw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsByDateCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsByDateCompletedEventHandler.html",
+          "hash": "W4wqy+xCQb5k+WFmHCHiFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsCompletedEventArgs.html",
+          "hash": "4bQUN2JUfm6zTi+72MfcEA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsCompletedEventHandler.html",
+          "hash": "jixNmKStfRl4uA5iG9q8Zw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventArgs.html",
+          "hash": "ilm23RJZavKsY0IZC0LYFw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventHandler.html",
+          "hash": "NWxb71s68G9Tn8pFce+g/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventArgs.html",
+          "hash": "YcasoEbms+Zi3qRIklxASA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventHandler.html",
+          "hash": "FarUoqKRETLOoP6pn5PcDw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventArgs.html",
+          "hash": "NrZcci1WTwMmB0L0b3eT+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventHandler.html",
+          "hash": "kMA3cbPVfTT2uolQLSui4w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAccountPhotoCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAccountPhotoCompletedEventArgs.html",
+          "hash": "xdem/lPAg4XmKv84Gx7bPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAccountPhotoCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAccountPhotoCompletedEventHandler.html",
+          "hash": "Pgm2oixQcfxaIlK1PKNVjQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAllAccountsCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAllAccountsCompletedEventArgs.html",
+          "hash": "5zxuLON3sQYeAxVFnYEGZw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAllAccountsCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAllAccountsCompletedEventHandler.html",
+          "hash": "b0P7bcfeDV2hMJuZ8jMFWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAllAccountsExtendedCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAllAccountsExtendedCompletedEventArgs.html",
+          "hash": "egIQt7aj8yix17BnzHXRIg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAllAccountsExtendedCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAllAccountsExtendedCompletedEventHandler.html",
+          "hash": "LSyCO34yfvbVhn9g1IfXbA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventArgs.html",
+          "hash": "141ywca0HusI41//uhWrVg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventHandler.html",
+          "hash": "U7169cMZ5wrVZM2Wum5PJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getClassListCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getClassListCompletedEventArgs.html",
+          "hash": "RZkapHbln2/jfz6eR3ufyg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getClassListCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getClassListCompletedEventHandler.html",
+          "hash": "gbgdWEHyn60s7YIuFiAVCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getClassListJsonCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getClassListJsonCompletedEventArgs.html",
+          "hash": "LLlr3kNibyCre6NG5B0BZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getClassListJsonCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getClassListJsonCompletedEventHandler.html",
+          "hash": "Q99eYH16res5exrVw1zfmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getClassTeachersCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getClassTeachersCompletedEventArgs.html",
+          "hash": "boWtCZDLXm+znDQkEE7GTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getClassTeachersCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getClassTeachersCompletedEventHandler.html",
+          "hash": "MCMaP/1Ejfl9a5yvDPPVtg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getCoursesCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getCoursesCompletedEventArgs.html",
+          "hash": "J/6jpa9Tgpbztnj/zNMTpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getCoursesCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getCoursesCompletedEventHandler.html",
+          "hash": "EjnhkX4xh/IdbSANQo7Reg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventArgs.html",
+          "hash": "gH7oGMbgaDHkjUvgY2HtIg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventHandler.html",
+          "hash": "BTp4iHlAOsDDh8kI2h/1ng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventArgs.html",
+          "hash": "3/24kjeBNY0yf0SauTAXng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventHandler.html",
+          "hash": "0fxOaxVbNpsUkLvpzVNTXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getStudentCareerCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getStudentCareerCompletedEventArgs.html",
+          "hash": "YfGS5ZRcJvMmZl/0gOTfJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getStudentCareerCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getStudentCareerCompletedEventHandler.html",
+          "hash": "Z2FMww1r1aBtsui1lYwlsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserDetailsByNumberCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserDetailsByNumberCompletedEventArgs.html",
+          "hash": "Dyi1MTs0TaqsWf5qbKCsPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserDetailsByNumberCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserDetailsByNumberCompletedEventHandler.html",
+          "hash": "v6VpdFhC/lH1UnRaQi/d6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventArgs.html",
+          "hash": "rySPFPV3cmXWoVB8aIFOCw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventHandler.html",
+          "hash": "CNZluLviwjkJS1EuwSdGbQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserDetailsCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserDetailsCompletedEventArgs.html",
+          "hash": "62mryFj/iyVuDHOCyFq75w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserDetailsCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserDetailsCompletedEventHandler.html",
+          "hash": "9joojIr1lQ/X/hHAObxKMw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserOfficialClassCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserOfficialClassCompletedEventArgs.html",
+          "hash": "NV2DVrFEPZiV44NFhTfH4g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.getUserOfficialClassCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.getUserOfficialClassCompletedEventHandler.html",
+          "hash": "oVRpDYcBKxFr0GRBafM6KA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.removeCoAccountCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.removeCoAccountCompletedEventArgs.html",
+          "hash": "SHbW1sAiWNDIJHpHBCE5zw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.removeCoAccountCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.removeCoAccountCompletedEventHandler.html",
+          "hash": "BW+voFVaY0d76+9Id5BPnw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.removeUserFromGroupCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.removeUserFromGroupCompletedEventArgs.html",
+          "hash": "QU3BW5Cx5VejF331iLgIDg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.removeUserFromGroupCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.removeUserFromGroupCompletedEventHandler.html",
+          "hash": "2i1PwCTLnPstaHbWhBcC+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.replaceInumCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.replaceInumCompletedEventArgs.html",
+          "hash": "4wrXVnzSemr0a/Ht6yMtrA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.replaceInumCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.replaceInumCompletedEventHandler.html",
+          "hash": "vM+GUGgfyZa+koUaV+Sm+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.returnCsvErrorCodesCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.returnCsvErrorCodesCompletedEventArgs.html",
+          "hash": "10EHvU/nsWbM9tvK1y2Wkg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.returnCsvErrorCodesCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.returnCsvErrorCodesCompletedEventHandler.html",
+          "hash": "mB71xz0kKNfuD2OVqfhdNQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.returnErrorCodesCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.returnErrorCodesCompletedEventHandler.html",
+          "hash": "0LSsUqrVS1K8698/Cb7zqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.returnJsonErrorCodesCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.returnJsonErrorCodesCompletedEventArgs.html",
+          "hash": "IOZGeKAx0W9fhrV3YnmfiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.returnJsonErrorCodesCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.returnJsonErrorCodesCompletedEventHandler.html",
+          "hash": "ZTKNRdGGm3xAZ6ZxkFmWOA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveClassCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveClassCompletedEventArgs.html",
+          "hash": "d3R9jLgdu1wP7/YSkvmi9w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveClassCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveClassCompletedEventHandler.html",
+          "hash": "qXMR4C7bwFIkG8xfpLbG7Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveClassListCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveClassListCompletedEventArgs.html",
+          "hash": "DAkYK6I1vsQgdqtXj+XWMA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveClassListCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveClassListCompletedEventHandler.html",
+          "hash": "ubKSjNplsSvgh3AR1Fyo2w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveClassListJsonCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveClassListJsonCompletedEventArgs.html",
+          "hash": "rl44MCUWQ3rKkAYAaxi4KQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveClassListJsonCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveClassListJsonCompletedEventHandler.html",
+          "hash": "ayoppTjN0IODB/aPS5paFg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveGroupCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveGroupCompletedEventArgs.html",
+          "hash": "qi9luRQ375o//1NY+QF9uQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveGroupCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveGroupCompletedEventHandler.html",
+          "hash": "I8i5vcA9QCs5d1/WLAcuPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.savePasswordCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.savePasswordCompletedEventArgs.html",
+          "hash": "Ma69YId21oG3au2V0QscnQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.savePasswordCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.savePasswordCompletedEventHandler.html",
+          "hash": "KPAEW/wVnCESGdxNCa9nDw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventArgs.html",
+          "hash": "mH7R9WdoNIqT/iomlfyVNw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventHandler.html",
+          "hash": "7m1/OKYaxfLr7e5N16mFGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveSignatureCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveSignatureCompletedEventArgs.html",
+          "hash": "7X04cPAH5c3u2tM1vLL2cQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveSignatureCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveSignatureCompletedEventHandler.html",
+          "hash": "pnG4oq9dy6Oeq4XHQ79YKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserCompletedEventArgs.html",
+          "hash": "HuqaT1USpvCRouFLFoc3UA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserCompletedEventHandler.html",
+          "hash": "A9Ea1N9kakDOd0znipr2Vw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserParameterCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserParameterCompletedEventArgs.html",
+          "hash": "U2iJ/lGE4ACbwzjBdqFQYw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserParameterCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserParameterCompletedEventHandler.html",
+          "hash": "TagE8K5IbS0DdffBJ2+ASA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserToClassCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserToClassCompletedEventArgs.html",
+          "hash": "ZpPThsrDRYot2RN0TSC6xw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserToClassCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserToClassCompletedEventHandler.html",
+          "hash": "+FC57mL3dy+TpHiu+J2PfQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventArgs.html",
+          "hash": "tSuPnYUuAIVaOt3aOxaKiA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventHandler.html",
+          "hash": "Kd6uAk5d/yNSUU6a5JHfTA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserToClassesCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserToClassesCompletedEventArgs.html",
+          "hash": "pPmW+sX/qX5P8RCl/22xpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.saveUserToClassesCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.saveUserToClassesCompletedEventHandler.html",
+          "hash": "ORhYUBHiQqgTP6lRbRvV/A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.sendMsgCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.sendMsgCompletedEventArgs.html",
+          "hash": "IO7YbFuQ2huaNQPkfZF94A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.sendMsgCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.sendMsgCompletedEventHandler.html",
+          "hash": "xxZjAnczbL6Pc3I+baAzng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.setAccountPhotoCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.setAccountPhotoCompletedEventArgs.html",
+          "hash": "vyI1mQvSiqOu+cRJiojyBQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.setAccountPhotoCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.setAccountPhotoCompletedEventHandler.html",
+          "hash": "+7chfTC6jukMeoUYu1T2Gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.setAccountStatusCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.setAccountStatusCompletedEventArgs.html",
+          "hash": "WbM1/AG1HHYoWamj1bwOBQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.setAccountStatusCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.setAccountStatusCompletedEventHandler.html",
+          "hash": "RRvTWphu9lLSBaLz7sr4uA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.startSkoreSyncCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.startSkoreSyncCompletedEventArgs.html",
+          "hash": "9OeJwE5V+ZdmdWKDFpiFzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.startSkoreSyncCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.startSkoreSyncCompletedEventHandler.html",
+          "hash": "GLhL4g58qOvTLvbjvXM+QQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.unregisterStudentCompletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.unregisterStudentCompletedEventArgs.html",
+          "hash": "j1rGfs0ouVz6rZLJLQS01Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.unregisterStudentCompletedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.unregisterStudentCompletedEventHandler.html",
+          "hash": "3EftBF22nTo8hOL+VDCGyw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.SS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.SS.html",
+          "hash": "6Vos7mIb5Yp5h3SE7in5ag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Utils.html",
+          "hash": "SrOPPXtQ4UJn+5AFtifDTg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.html",
+          "hash": "4H0+mLCIOB2QOIm/ENXflg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "ABZO87FI5XGvtAoZFPmMOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "Sg+nKmnHP++YKMT39ruhpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 120,
+          "skipped_file_count": 120
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
