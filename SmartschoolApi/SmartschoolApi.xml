@@ -1,0 +1,1482 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartschoolApi</name>
+    </assembly>
+    <members>
+        <member name="M:SmartschoolApi.Accounts.Save(AbstractAccountApi.IAccount,System.String,System.String,System.String)">
+            <summary>
+            Saves an account to smartschool. This can be used to create a new user as well as update an
+            existing user, but the account values must be complete. Also a new password must be provided. There are other methods to do a partial
+            user update.
+            </summary>
+            <param name="account">The account to send to smartschool.</param>
+            <param name="pw1">The new password for the user.</param>
+            <param name="pw2">The password for the first co-account. This is optional and will not change the password if empty.</param>
+            <param name="pw3">The password for the second co-account. This is option ald will not change the password if empty.</param>
+            <returns>Returns true on success. False when the transaction fails. When false, an error will be logged.</returns>
+        </member>
+        <member name="M:SmartschoolApi.Accounts.Load(AbstractAccountApi.IAccount)">
+            <summary>
+            Load account details from smartschool. The account must have a valid UID to begin with.
+            All other values will be overwritten.
+            </summary>
+            <param name="account">The account to load.</param>
+            <returns>Returns false when failed. Errors will be added to the log object.</returns>
+        </member>
+        <member name="T:SmartschoolApi.Error">
+            <summary>
+            Smartschool has a table with error messages. When an error occurs, the error code can be converted
+            to a message using this table. This means the table has to be loaded first (GetCodes). Once loaded,
+            this class can be used to add message to the log. The log object itself is passed as an argument
+            when the Init method on the Connector is called.
+            </summary>
+        </member>
+        <member name="F:SmartschoolApi.Error.errorCodes">
+            <summary>
+            A json list of all error codes
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.Error.GetCodes">
+            <summary>
+            Loads the error codes from smartschool and saves them in the errorCodes object.
+            When the list with errorCodes is alread loaded, nothing will happen.
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.Error.ToString(System.Int32)">
+            <summary>
+            Convert an error code to its string value.
+            </summary>
+            <param name="error">The error code</param>
+            <returns>A string explanation of the error. Or 'Invalid Error' when the code is not known.</returns>
+        </member>
+        <member name="M:SmartschoolApi.Error.AddError(System.Int32)">
+            <summary>
+             Add an error to the Log object about the provided error code.
+            </summary>
+            <param name="error">The error code to add.</param>
+        </member>
+        <member name="M:SmartschoolApi.Error.AddError(System.String)">
+            <summary>
+            Add a string Error message to the Log object.
+            </summary>
+            <param name="error">The text to add as error.</param>
+        </member>
+        <member name="M:SmartschoolApi.Error.AddMessage(System.String)">
+            <summary>
+            Add a string message to the Log object.
+            </summary>
+            <param name="message">The text to add as message.</param>
+        </member>
+        <member name="T:SmartschoolApi.Group">
+            <summary>
+            A Smartschool account group. Groups can have have Child groups, Accounts and group properties.
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.Group.#ctor(AbstractAccountApi.IGroup)">
+            <summary>
+            Creates a Smartschool group. Parent can be null if this is the main group.
+            </summary>
+            <param name="parent">The Parent group. Can be null.</param>
+        </member>
+        <member name="P:SmartschoolApi.Group.Name">
+            <summary>
+            The Name of the group
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Description">
+            <summary>
+            The group description
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Type">
+            <summary>
+            The group type. Can be Group, Class or Invalid.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Visible">
+            <summary>
+            If the group is visible for normal users.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Official">
+            <summary>
+            Wether or not this group is an official group. Official groups are classes with students.
+            Official groups need to have an AdminNumber and InstituteNumber.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.CoAccountLabel">
+            <summary>
+            The name co-accounts will see for this group. This value is optional.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.AdminNumber">
+            <summary>
+             Administative numbers are also present in Wisa. Every study domain has its own number
+             and must be added to official groups.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.InstituteNumber">
+            <summary>
+            Institute Number. Must be added for official groups. It's a normal numeric value, but the
+            code must exist in smartschool. If not, the entry will be rejected.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Titulars">
+            <summary>
+            The (co-)titulars in a list of strings. Because of limitations by smartschool this field cannot
+            be saved right now.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Children">
+            <summary>
+            The child groups in this group.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Accounts">
+            <summary>
+            The accounts in this group.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Parent">
+            <summary>
+            The parent group. Groups at level 0 have no parent and this will return null.
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.Group.Find(System.String)">
+            <summary>
+            Find a group by its name. Subgroups will also be searched, unless this group is added
+            to the list with discarded subgroups in the Connector.
+            </summary>
+            <param name="name">The group name to find.</param>
+            <returns>The group with this name, or null if not found.</returns>
+        </member>
+        <member name="P:SmartschoolApi.Group.CountClassGroupsOnly">
+            <summary>
+            Get the number of official groups (Classes) within this group. If this group is in the 
+            list with DiscardedSubgroups, subgroups will not be evaluated.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.Group.Count">
+            <summary>
+            Get the number of groups (Classes) within this group. If this group is in the 
+            list with DiscardedSubgroups, subgroups will not be evaluated.
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.Group.NumAccounts">
+            <summary>
+            Counts the number of accounts in this group and all its subgroups. If this group is present
+            in the list Connector.DiscardSubgroups, the child groups will not be evaluated.
+            </summary>
+            <returns>The number of subgroups</returns>
+        </member>
+        <member name="M:SmartschoolApi.Group.Sort">
+            <summary>
+            Sort all child groups by name. This is a recursive method.
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.Group.GetTreeAsList(System.Collections.Generic.List{AbstractAccountApi.IGroup})">
+            <summary>
+            Get all child groups as a list. This is a recursive method.
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:SmartschoolApi.Group.LoadAccounts">
+            <summary>
+            Loads the accounts in this group from smartschool. This method is NOT recursive.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SmartschoolApi.GroupManager">
+            <summary>
+            Manager for Groups in Smartschool. Groups are stored in an object tree. The root of 
+            this tree is not a real object, but a container for all the groups in the main level of
+            smartschool.
+            </summary>
+        </member>
+        <member name="P:SmartschoolApi.GroupManager.Root">
+            <summary>
+            The root of the Group object tree. Will be null if no accounts are loaded.
+            </summary>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.Load">
+            <summary>
+            Load all Groups from smartschool. This method will not reload if groups are already present. If a reload is 
+            needed, use the reload method.
+            </summary>
+            <returns>awaitable</returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.Count(System.Boolean)">
+            <summary>
+            Counts the groups in the tree.
+            </summary>
+            <param name="onlyClassGroups">If true, only official groups (classes) will be included.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.Reload">
+            <summary>
+            Reload the whole group object tree. The tree will be sorted when ready.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.GetLogicalParent(System.String)">
+            <summary>
+            Tries to determine what the logical parent should be for a class group. This
+            works by evaluating the first character in the provided string, which should be a 
+            number, indicating the year for this class. The method takes the current Smartschool
+            configuration into account. Meaning that if only grades and no years are configured, the
+            logical parent should be the grade group. If years are configured, the logical parent for 
+            a class should be a year. If none are configured, the logical parent should be the path for
+            all classes.
+            </summary>
+            <param name="classgroup">The name of the group, should start with a number.</param>
+            <returns>The name of the logical parent.</returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.Save(AbstractAccountApi.IGroup)">
+            <summary>
+            Save the group to smartschool. This will save the group's name, description, group code, parent group code,
+            untis ID, (institute number and administrative number for official groups). Please note that smartschool does not accept groups without
+            a description.
+            </summary>
+            <param name="group">The group to save</param>
+            <returns>True if succeeded. Else false.</returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.Delete(AbstractAccountApi.IGroup)">
+            <summary>
+            Deletes the group from smartschool.
+            </summary>
+            <param name="group">The group to delete</param>
+            <returns>True on success. Else false.</returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.MoveUserToClass(AbstractAccountApi.IAccount,AbstractAccountApi.IGroup,System.DateTime)">
+            <summary>
+            Moves a student to another official class. The group must be an official group with GroupType.Class.
+            The date provided is very important, because this is an official class change. Changes to the student's 
+            evaluation will look at the date of this change.
+            </summary>
+            <param name="account">The account to move.</param>
+            <param name="group">The new class.</param>
+            <param name="date">The official date of this change.</param>
+            <returns>True on success. Else false.</returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.AddUserToGroup(AbstractAccountApi.IAccount,AbstractAccountApi.IGroup)">
+            <summary>
+            Adds a user to a group. The target group cannot be an official group. To move a student to a new official group,
+            the MoveUserToClass method should be used.
+            </summary>
+            <param name="account">The account to add.</param>
+            <param name="group">The target group.</param>
+            <returns>True on success. Else false.</returns>
+        </member>
+        <member name="M:SmartschoolApi.GroupManager.RemoveUserFromGroup(AbstractAccountApi.IAccount,AbstractAccountApi.IGroup)">
+            <summary>
+            Removes a user from a group. The group should not be an official group.
+            </summary>
+            <param name="account">The account to remove</param>
+            <param name="group">The group to remove the account from.</param>
+            <returns>True on success. Else false.</returns>
+        </member>
+        <member name="M:SmartschoolApi.Utils.DateToString(System.DateTime)">
+            <summary>
+            Converts a Date to the String format expected by smartschool.
+            </summary>
+            <param name="value">The DateTime object to convert</param>
+            <returns>A date string with format year-month-day</returns>
+        </member>
+        <member name="M:SmartschoolApi.Utils.StringToDate(System.String)">
+            <summary>
+            Converts a smartschool date string to a DateTime object.
+            </summary>
+            <param name="value">The string, with format year-month-day</param>
+            <returns>A DateTime object representing the same day.</returns>
+        </member>
+        <member name="M:SmartschoolApi.Utils.SameDay(System.DateTime,System.DateTime)">
+            <summary>
+            Checks if two DateTime objects refer to the same day. Year, Month and Day are
+            evaluated, but differences in Hours and lower units are discarded.
+            </summary>
+            <param name="a">The reference Date</param>
+            <param name="b">The date to compare</param>
+            <returns>True, if Year, Month and Day are the same. Otherwise false.</returns>
+        </member>
+        <member name="T:SmartschoolApi.SS.V3Service">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.#ctor">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveUserCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveClassCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveGroupCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAllAccountsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAllAccountsExtendedCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAllGroupsAndClassesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.addCourseCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.addCourseTeacherCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.addCourseStudentsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getCoursesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.delUserCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveUserParameterCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getClassListCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getClassListJsonCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveClassListCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveClassListJsonCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.delClassCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveUserToClassesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.removeUserFromGroupCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.clearGroupCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveUserToClassCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveUserToClassesAndGroupsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.setAccountStatusCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.setAccountPhotoCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAccountPhotoCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.replaceInumCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.forcePasswordResetCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.savePasswordCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.sendMsgCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getSkoreClassTeacherCourseRelationCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.unregisterStudentCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getClassTeachersCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAbsentsByDateCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAbsentsWithInternalNumberByDateCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAbsentsWithUsernameByDateCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAbsentsByDateAndGroupCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAbsentsWithAliasByDateCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getAbsentsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getUserDetailsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getUserDetailsByNumberCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getUserDetailsByUsernameCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getUserOfficialClassCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveSignatureCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getStudentCareerCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.deactivateTwoFactorAuthenticationCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.returnErrorCodesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.returnCsvErrorCodesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.returnJsonErrorCodesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.startSkoreSyncCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.checkStatusCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.changeUsernameCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.changeInternNumberCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.changeGroupOwnersCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.removeCoAccountCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.getSchoolyearDataOfClassCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SmartschoolApi.SS.V3Service.saveSchoolyearDataOfClassCompleted">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUser(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClass(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveGroup(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveGroupAsync(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveGroupAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllAccounts(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllAccountsAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllAccountsAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllAccountsExtended(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllAccountsExtendedAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllAccountsExtendedAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllGroupsAndClasses(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllGroupsAndClassesAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAllGroupsAndClassesAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourse(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseTeacher(System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseTeacherAsync(System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseTeacherAsync(System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseStudents(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseStudentsAsync(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.addCourseStudentsAsync(System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getCourses(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getCoursesAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getCoursesAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.delUser(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.delUserAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.delUserAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserParameter(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserParameterAsync(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserParameterAsync(System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassList(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassListAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassListAsync(System.Object,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassListJson(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassListJsonAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassListJsonAsync(System.Object,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassList(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassListAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassListAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassListJson(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassListJsonAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveClassListJsonAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.delClass(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.delClassAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.delClassAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClasses(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassesAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassesAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.removeUserFromGroup(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.removeUserFromGroupAsync(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.removeUserFromGroupAsync(System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.clearGroup(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.clearGroupAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.clearGroupAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClass(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassAsync(System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassAsync(System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassesAndGroups(System.String,System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassesAndGroupsAsync(System.String,System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveUserToClassesAndGroupsAsync(System.String,System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.setAccountStatus(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.setAccountStatusAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.setAccountStatusAsync(System.String,System.String,System.Object,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.setAccountPhoto(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.setAccountPhotoAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.setAccountPhotoAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAccountPhoto(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAccountPhotoAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAccountPhotoAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.replaceInum(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.replaceInumAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.replaceInumAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.forcePasswordReset(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.forcePasswordResetAsync(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.forcePasswordResetAsync(System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.savePassword(System.String,System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.savePasswordAsync(System.String,System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.savePasswordAsync(System.String,System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.sendMsg(System.String,System.String,System.String,System.String,System.String,System.Object,System.Int32,System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.sendMsgAsync(System.String,System.String,System.String,System.String,System.String,System.Object,System.Int32,System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.sendMsgAsync(System.String,System.String,System.String,System.String,System.String,System.Object,System.Int32,System.Boolean,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getSkoreClassTeacherCourseRelation(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getSkoreClassTeacherCourseRelationAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getSkoreClassTeacherCourseRelationAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.unregisterStudent(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.unregisterStudentAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.unregisterStudentAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassTeachers(System.String,System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassTeachersAsync(System.String,System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getClassTeachersAsync(System.String,System.Boolean,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsByDate(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsByDateAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsByDateAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithInternalNumberByDate(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithInternalNumberByDateAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithInternalNumberByDateAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithUsernameByDate(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithUsernameByDateAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithUsernameByDateAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsByDateAndGroup(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsByDateAndGroupAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsByDateAndGroupAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithAliasByDate(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithAliasByDateAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsWithAliasByDateAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsents(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getAbsentsAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetails(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsByNumber(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsByNumberAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsByNumberAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsByUsername(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsByUsernameAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserDetailsByUsernameAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserOfficialClass(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserOfficialClassAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getUserOfficialClassAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveSignature(System.String,System.String,System.Int32,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveSignatureAsync(System.String,System.String,System.Int32,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveSignatureAsync(System.String,System.String,System.Int32,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getStudentCareer(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getStudentCareerAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getStudentCareerAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.deactivateTwoFactorAuthentication(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.deactivateTwoFactorAuthenticationAsync(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.deactivateTwoFactorAuthenticationAsync(System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnErrorCodes">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnErrorCodesAsync">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnErrorCodesAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnCsvErrorCodes">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnCsvErrorCodesAsync">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnCsvErrorCodesAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnJsonErrorCodes">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnJsonErrorCodesAsync">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.returnJsonErrorCodesAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.startSkoreSync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.startSkoreSyncAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.startSkoreSyncAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.checkStatus(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.checkStatusAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.checkStatusAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeUsername(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeUsernameAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeUsernameAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeInternNumber(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeInternNumberAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeInternNumberAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeGroupOwners(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeGroupOwnersAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.changeGroupOwnersAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.removeCoAccount(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.removeCoAccountAsync(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.removeCoAccountAsync(System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getSchoolyearDataOfClass(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getSchoolyearDataOfClassAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.getSchoolyearDataOfClassAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveSchoolyearDataOfClass(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveSchoolyearDataOfClassAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.saveSchoolyearDataOfClassAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SmartschoolApi.SS.V3Service.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveUserCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveClassCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveClassCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveClassCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveGroupCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveGroupCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveGroupCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAllAccountsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAllAccountsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAllAccountsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAllAccountsExtendedCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAllAccountsExtendedCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAllAccountsExtendedCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAllGroupsAndClassesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.addCourseCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.addCourseCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.addCourseCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.addCourseTeacherCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.addCourseTeacherCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.addCourseTeacherCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.addCourseStudentsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.addCourseStudentsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.addCourseStudentsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getCoursesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getCoursesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getCoursesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.delUserCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.delUserCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.delUserCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserParameterCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserParameterCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveUserParameterCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getClassListCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getClassListCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getClassListCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getClassListJsonCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getClassListJsonCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getClassListJsonCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveClassListCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveClassListCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveClassListCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveClassListJsonCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveClassListJsonCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveClassListJsonCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.delClassCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.delClassCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.delClassCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserToClassesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserToClassesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveUserToClassesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.removeUserFromGroupCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.removeUserFromGroupCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.removeUserFromGroupCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.clearGroupCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.clearGroupCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.clearGroupCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserToClassCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserToClassCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveUserToClassCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveUserToClassesAndGroupsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.setAccountStatusCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.setAccountStatusCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.setAccountStatusCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.setAccountPhotoCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.setAccountPhotoCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.setAccountPhotoCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAccountPhotoCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAccountPhotoCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAccountPhotoCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.replaceInumCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.replaceInumCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.replaceInumCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.forcePasswordResetCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.forcePasswordResetCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.forcePasswordResetCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.savePasswordCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.savePasswordCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.savePasswordCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.sendMsgCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.sendMsgCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.sendMsgCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getSkoreClassTeacherCourseRelationCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.unregisterStudentCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.unregisterStudentCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.unregisterStudentCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getClassTeachersCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getClassTeachersCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getClassTeachersCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsByDateCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsByDateCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAbsentsByDateCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAbsentsWithInternalNumberByDateCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAbsentsWithUsernameByDateCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAbsentsByDateAndGroupCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAbsentsWithAliasByDateCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getAbsentsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getAbsentsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserDetailsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserDetailsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getUserDetailsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserDetailsByNumberCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserDetailsByNumberCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getUserDetailsByNumberCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getUserDetailsByUsernameCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserOfficialClassCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getUserOfficialClassCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getUserOfficialClassCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveSignatureCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveSignatureCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveSignatureCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getStudentCareerCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getStudentCareerCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getStudentCareerCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.deactivateTwoFactorAuthenticationCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.returnErrorCodesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.returnCsvErrorCodesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.returnCsvErrorCodesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.returnCsvErrorCodesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.returnJsonErrorCodesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.returnJsonErrorCodesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.returnJsonErrorCodesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.startSkoreSyncCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.startSkoreSyncCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.startSkoreSyncCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.checkStatusCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.checkStatusCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.checkStatusCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.changeUsernameCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.changeUsernameCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.changeUsernameCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.changeInternNumberCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.changeInternNumberCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.changeInternNumberCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.changeGroupOwnersCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.changeGroupOwnersCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.changeGroupOwnersCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.removeCoAccountCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.removeCoAccountCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.removeCoAccountCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.getSchoolyearDataOfClassCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SmartschoolApi.SS.saveSchoolyearDataOfClassCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+    </members>
+</doc>
