@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using AbstractAccountApi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -100,6 +101,23 @@ namespace SmartSchoolTests
                 }
             }
             Assert.IsFalse(found);
+        }
+
+        [TestMethod]
+        public async Task TestJSon()
+        {
+            await GroupManager.Load();
+            Assert.IsNotNull(GroupManager.Root, "Group Root should not be null");
+            var obj = GroupManager.Root.ToJson();
+            File.WriteAllText("SmartschoolGroups.json", obj.ToString());
+
+            Assert.IsTrue(File.Exists("SmartschoolGroups.json"), "json file does not exist");
+
+            string content = File.ReadAllText("SmartschoolGroups.json");
+            var newObj = Newtonsoft.Json.Linq.JObject.Parse(content);
+            var newGroups = new Group(null, newObj);
+
+            Assert.IsTrue(newGroups.Equals(GroupManager.Root, true), "The group tree is not the same");
         }
     }
 }

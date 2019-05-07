@@ -1,5 +1,6 @@
 ﻿using AbstractAccountApi;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,9 @@ namespace SmartschoolApi
         public string Code { get => code; set => code = value; }
 
         string untis = string.Empty;
+        /// <summary>
+        /// Untis code is used to link class schedules
+        /// </summary>
         public string Untis { get => untis; set => untis = value; }
 
         bool visible = false;
@@ -278,6 +282,160 @@ namespace SmartschoolApi
             {
                 Error.AddError(e.Message);
             }
+        }
+
+        /// <summary>
+        /// Create a JSON JObject from this group.
+        /// </summary>
+        /// <returns>The new JObject</returns>
+        public JObject ToJson()
+        {
+            JObject result = new JObject();
+
+            result["Name"] = Name;
+            result["Description"] = Description;
+            result["Code"] = Code;
+            result["Official"] = Official;
+            result["Visible"] = Visible;
+            result["Type"] = Type.ToString();
+            result["Untis"] = Untis;
+            result["InstituteNumber"] = InstituteNumber;
+            result["AdminNumber"] = AdminNumber;
+
+            if(Children != null)
+            {
+                var children = new JArray();
+                foreach (var child in Children)
+                {
+                    children.Add(child.ToJson());
+                }
+                result["Children"] = children;
+            }
+            
+            return result;
+        }
+
+        /// <summary>
+        /// Create a group from a JSON object.
+        /// </summary>
+        /// <param name="parent">The parent of this group in the tree model.</param>
+        /// <param name="obj">The JObject to retrieve data from.</param>
+        public Group(IGroup parent, JObject obj)
+        {
+            Parent = parent;
+            Name = obj["Name"].ToString();
+            Description = obj["Description"].ToString();
+            Code = obj["Code"].ToString();
+            Official = (bool)obj["Official"];
+            Visible = (bool)obj["Visible"];
+            string groupType = obj["Type"].ToString();
+            switch(groupType)
+            {
+                case "Group": Type = GroupType.Group; break;
+                case "Class": Type = GroupType.Class; break;
+                default: Type = GroupType.Invalid; break;
+            }
+            Untis = obj["Untis"].ToString();
+            InstituteNumber = obj["InstituteNumber"].ToString();
+            AdminNumber = Convert.ToInt32(obj["AdminNumber"]);
+
+            if(obj.ContainsKey("Children"))
+            {
+                Children = new List<IGroup>();
+                var arr = obj["Children"].ToArray();
+                foreach(var group in arr)
+                {
+                    Children.Add(new Group(this, group as JObject));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check if this group is equal to another group.
+        /// </summary>
+        /// <param name="other">The Other group</param>
+        /// <param name="recursive">Also check child groups</param>
+        /// <returns>True if equal.</returns>
+        public bool Equals(IGroup other, bool recursive)
+        {
+            if (!Name.Equals(other.Name))
+            {
+                Error.AddMessage("Group Name is different: " + Name + " other: " + other.Name);
+                return false;
+            }
+            if (!Description.Equals(other.Description))
+            {
+                Error.AddMessage("Group " + Name + " Description is different: " + Description + " other: " + other.Description);
+                return false;
+            }
+            if (!Code.Equals(other.Code))
+            {
+                Error.AddMessage("Group " + Name + " Code is different: " + Code + " other: " + other.Code);
+                return false;
+            }
+            if (!Official.Equals(other.Official))
+            {
+                Error.AddMessage("Group " + Name + " Official is different: " + Official + " other: " + other.Official);
+                return false;
+            }
+            if (!Visible.Equals(other.Visible))
+            {
+                Error.AddMessage("Group " + Name + " Visible is different: " + Visible + " other: " + other.Visible);
+                return false;
+            }
+            if (!Type.Equals(other.Type))
+            {
+                Error.AddMessage("Group " + Name + " Type is different: " + Type + " other: " + other.Type);
+                return false;
+            }
+            if (!Untis.Equals(other.Untis))
+            {
+                Error.AddMessage("Group " + Name + " Untis is different: " + Untis + " other: " + other.Untis);
+                return false;
+            }
+            if (!InstituteNumber.Equals(other.InstituteNumber))
+            {
+                Error.AddMessage("Group " + Name + " Institute is different: " + InstituteNumber + " other: " + other.InstituteNumber);
+                return false;
+            }
+            if (!AdminNumber.Equals(other.AdminNumber))
+            {
+                Error.AddMessage("Group " + Name + " AdminNumber is different: " + AdminNumber + " other: " + other.AdminNumber);
+                return false;
+            }
+
+            // if not recursive, we're done here
+            if (!recursive) return true;
+
+            // last step: compare children
+            if (Children == null && other.Children == null) return true;
+            if (Children == null)
+            {
+                Error.AddMessage("Group " + Name + " has no children");
+                return false;
+            }
+            if (other.Children == null)
+            {
+                Error.AddMessage("Group " + Name + " has children");
+                return false;
+            }
+            if (Children.Count != other.Children.Count)
+            {
+                Error.AddMessage("Group " + Name + " has children: " + Children.Count + " other: " + other.Children.Count);
+                return false;
+            }
+
+            for(int i = 0; i < Children.Count; i++)
+            {
+                if (!Children[i].Equals(other.Children[i], true))
+                {
+                    Error.AddMessage("Child Group " + Name + " is different");
+                    return false;
+                }
+            }
+
+            // passed all tests
+            return true;
         }
     }
 }

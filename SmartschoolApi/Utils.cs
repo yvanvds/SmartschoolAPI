@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmartschoolApi
 {
+    /// <summary>
+    /// This class contains a few utilities which are used for convenience.
+    /// </summary>
     static public class Utils
     {
         /// <summary>
