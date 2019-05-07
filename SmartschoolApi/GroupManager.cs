@@ -9,18 +9,35 @@ using System.Xml;
 
 namespace SmartschoolApi
 {
-    public static class Groups
+    /// <summary>
+    /// Manager for Groups in Smartschool. Groups are stored in an object tree. The root of 
+    /// this tree is not a real object, but a container for all the groups in the main level of
+    /// smartschool.
+    /// </summary>
+    public static class GroupManager
     {
         private static IGroup root;
-        // the root itself is just an empty hook
+        /// <summary>
+        /// The root of the Group object tree. Will be null if no accounts are loaded.
+        /// </summary>
         public static IGroup Root { get => root.Children != null ? root.Children[0] : null; }
 
+        /// <summary>
+        /// Load all Groups from smartschool. This method will not reload if groups are already present. If a reload is 
+        /// needed, use the reload method.
+        /// </summary>
+        /// <returns>awaitable</returns>
         public static async Task Load()
         {
             if (root != null) return;
             await Reload();
         }
 
+        /// <summary>
+        /// Counts the groups in the tree.
+        /// </summary>
+        /// <param name="onlyClassGroups">If true, only official groups (classes) will be included.</param>
+        /// <returns></returns>
         public static int Count(bool onlyClassGroups)
         {
             if (root == null) return 0;
@@ -28,6 +45,10 @@ namespace SmartschoolApi
             return root.Count;
         }
 
+        /// <summary>
+        /// Reload the whole group object tree. The tree will be sorted when ready.
+        /// </summary>
+        /// <returns></returns>
         public static async Task Reload()
         {
             var result = await Task.Run(
@@ -131,7 +152,17 @@ namespace SmartschoolApi
             if (root != null) Root.Sort();
         }
 
-        // get the logical parent for this group, even it does not exist yet
+        /// <summary>
+        /// Tries to determine what the logical parent should be for a class group. This
+        /// works by evaluating the first character in the provided string, which should be a 
+        /// number, indicating the year for this class. The method takes the current Smartschool
+        /// configuration into account. Meaning that if only grades and no years are configured, the
+        /// logical parent should be the grade group. If years are configured, the logical parent for 
+        /// a class should be a year. If none are configured, the logical parent should be the path for
+        /// all classes.
+        /// </summary>
+        /// <param name="classgroup">The name of the group, should start with a number.</param>
+        /// <returns>The name of the logical parent.</returns>
         public static string GetLogicalParent(string classgroup)
         {
             string number = classgroup.Substring(0, 1);
@@ -168,6 +199,13 @@ namespace SmartschoolApi
             return Connector.StudentPath;
         }
 
+        /// <summary>
+        /// Save the group to smartschool. This will save the group's name, description, group code, parent group code,
+        /// untis ID, (institute number and administrative number for official groups). Please note that smartschool does not accept groups without
+        /// a description.
+        /// </summary>
+        /// <param name="group">The group to save</param>
+        /// <returns>True if succeeded. Else false.</returns>
         public static async Task<bool> Save(IGroup group)
         {
             int result = 0;
@@ -208,6 +246,11 @@ namespace SmartschoolApi
             return true;
         }
 
+        /// <summary>
+        /// Deletes the group from smartschool.
+        /// </summary>
+        /// <param name="group">The group to delete</param>
+        /// <returns>True on success. Else false.</returns>
         public static async Task<bool> Delete(IGroup group)
         {
             var result = await Task.Run(() => Connector.service.delClass(
@@ -224,6 +267,15 @@ namespace SmartschoolApi
             return true;
         }
 
+        /// <summary>
+        /// Moves a student to another official class. The group must be an official group with GroupType.Class.
+        /// The date provided is very important, because this is an official class change. Changes to the student's 
+        /// evaluation will look at the date of this change.
+        /// </summary>
+        /// <param name="account">The account to move.</param>
+        /// <param name="group">The new class.</param>
+        /// <param name="date">The official date of this change.</param>
+        /// <returns>True on success. Else false.</returns>
         public static async Task<bool> MoveUserToClass(IAccount account, IGroup group, DateTime date)
         {
             if (group.Type != GroupType.Class || !group.Official)
@@ -247,6 +299,13 @@ namespace SmartschoolApi
             return true;
         }
 
+        /// <summary>
+        /// Adds a user to a group. The target group cannot be an official group. To move a student to a new official group,
+        /// the MoveUserToClass method should be used.
+        /// </summary>
+        /// <param name="account">The account to add.</param>
+        /// <param name="group">The target group.</param>
+        /// <returns>True on success. Else false.</returns>
         public static async Task<bool> AddUserToGroup(IAccount account, IGroup group)
         {
             if (group.Official)
@@ -270,6 +329,12 @@ namespace SmartschoolApi
             return true;
         }
 
+        /// <summary>
+        /// Removes a user from a group. The group should not be an official group.
+        /// </summary>
+        /// <param name="account">The account to remove</param>
+        /// <param name="group">The group to remove the account from.</param>
+        /// <returns>True on success. Else false.</returns>
         public static async Task<bool> RemoveUserFromGroup(IAccount account, IGroup group)
         {
             if (group.Official)

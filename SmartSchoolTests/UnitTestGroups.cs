@@ -23,21 +23,21 @@ namespace SmartSchoolTests
         [TestMethod]
         public async Task LoadGroups()
         {
-            await Groups.Load();
-            Assert.IsNotNull(Groups.Root);
-            Assert.IsTrue(Groups.Root.Children.Count > 0);
+            await GroupManager.Load();
+            Assert.IsNotNull(GroupManager.Root);
+            Assert.IsTrue(GroupManager.Root.Children.Count > 0);
 
             // asume that the root group is not a class, is visible and not official
-            Assert.IsTrue(Groups.Root.Type == GroupType.Group);
-            Assert.IsTrue(Groups.Root.Visible);
-            Assert.IsFalse(Groups.Root.Official);
+            Assert.IsTrue(GroupManager.Root.Type == GroupType.Group);
+            Assert.IsTrue(GroupManager.Root.Visible);
+            Assert.IsFalse(GroupManager.Root.Official);
         }
 
         [TestMethod]
         public async Task AddAndDeleteGroup()
         {
-            await Groups.Load();
-            IGroup leerlingen = Groups.Root.Find("Leerlingen");
+            await GroupManager.Load();
+            IGroup leerlingen = GroupManager.Root.Find("Leerlingen");
             Assert.IsTrue(leerlingen != null);
 
             Group newGroup = new Group(leerlingen);
@@ -45,18 +45,18 @@ namespace SmartSchoolTests
             newGroup.Description = "may be deleted";
             newGroup.Type = GroupType.Group;
             newGroup.Code = "UTGRP";
-            bool result = await Groups.Save(newGroup);
+            bool result = await GroupManager.Save(newGroup);
             Assert.IsTrue(result);
 
-            await Groups.Reload();
-            IGroup testGroup = Groups.Root.Find("unittestgroup");
+            await GroupManager.Reload();
+            IGroup testGroup = GroupManager.Root.Find("unittestgroup");
             Assert.IsNotNull(testGroup);
             Assert.IsNotNull(testGroup.Parent);
             Assert.IsTrue(testGroup.Parent.Name == "Leerlingen");
 
-            await Groups.Delete(testGroup);
-            await Groups.Reload();
-            testGroup = Groups.Root.Find("unittestgroup");
+            await GroupManager.Delete(testGroup);
+            await GroupManager.Reload();
+            testGroup = GroupManager.Root.Find("unittestgroup");
             Assert.IsNull(testGroup);
         }
 
@@ -69,7 +69,7 @@ namespace SmartSchoolTests
 
             Group testgroup = new Group(null);
             testgroup.Name = Settings.Default.teacherGroup;
-            result = await Groups.AddUserToGroup(testaccount, testgroup);
+            result = await GroupManager.AddUserToGroup(testaccount, testgroup);
             Assert.IsTrue(result);
 
             await Accounts.LoadAccounts(testgroup);
@@ -85,7 +85,7 @@ namespace SmartSchoolTests
             }
             Assert.IsTrue(found);
 
-            result = await Groups.RemoveUserFromGroup(testaccount, testgroup);
+            result = await GroupManager.RemoveUserFromGroup(testaccount, testgroup);
             Assert.IsTrue(result);
 
             await Accounts.LoadAccounts(testgroup);

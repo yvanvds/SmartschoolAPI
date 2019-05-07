@@ -51,7 +51,7 @@
     <Compile Include="Connector.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="Groups.cs" />
+    <Compile Include="GroupManager.cs" />
     <Compile Include="JSONAccount.cs" />
     <Compile Include="JSONGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

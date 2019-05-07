@@ -10,9 +10,21 @@ namespace SmartschoolApi
 {
     public static class Accounts
     {
+        /// <summary>
+        /// Saves an account to smartschool. This can be used to create a new user as well as update an
+        /// existing user, but the account values must be complete. Also a new password must be provided. There are other methods to do a partial
+        /// user update.
+        /// </summary>
+        /// <param name="account">The account to send to smartschool.</param>
+        /// <param name="pw1">The new password for the user.</param>
+        /// <param name="pw2">The password for the first co-account. This is optional and will not change the password if empty.</param>
+        /// <param name="pw3">The password for the second co-account. This is option ald will not change the password if empty.</param>
+        /// <returns>Returns true on success. False when the transaction fails. When false, an error will be logged.</returns>
         public static async Task<bool> Save(IAccount account, string pw1, string pw2 = "", string pw3 = "")
         {
-            // convert values to smartschool format
+            // first convert values to smartschool format
+
+            // Account role needs to be in string format
             string role = "";
             switch (account.Role)
             {
@@ -24,17 +36,23 @@ namespace SmartschoolApi
                 default: return false; // other accounts should be no part of smartschool
             }
 
-
+            // Smartschool gender only has m/f values
             string gender = "f";
             if (account.Gender == GenderType.Male) gender = "m";
             else if (account.Gender == GenderType.Transgender) gender = "f"; // Smartschool only knows about male or female. Hopefully they'll discover the 21st century soon!
 
-            string birthday = account.Birthday.Year.ToString() + "-" + account.Birthday.Month.ToString() + "-" + account.Birthday.Day.ToString();
+            // Birthday needs to be a string (year-month-day)
+            string birthday = Utils.DateToString(account.Birthday);
 
+            // stamboeknummer is a string value. If equal to zero, it should be an empty string. If less than 1.000.000, a string needs
+            // to be added upfront.
             string stemID = account.StemID.ToString();
             if (account.StemID == 0) stemID = "";
             else if (account.StemID < 1000000) stemID = "0" + stemID;
 
+            // The street address must be passed as one string, but will be split on the server side.
+            // Splitting occurs on the last space, to separate the house number.
+            // If a / is included after that house number, it will be a buss number.
             string StreetAddress = account.Street;
             if (account.HouseNumber != string.Empty) StreetAddress += " " + account.HouseNumber;
             if (account.HouseNumberAdd != string.Empty) StreetAddress += "/" + account.HouseNumberAdd;
@@ -77,6 +95,12 @@ namespace SmartschoolApi
             return true;
         }
 
+        /// <summary>
+        /// Load account details from smartschool. The account must have a valid UID to begin with.
+        /// All other values will be overwritten.
+        /// </summary>
+        /// <param name="account">The account to load.</param>
+        /// <returns>Returns false when failed. Errors will be added to the log object.</returns>
         public static async Task<bool> Load(IAccount account)
         {
             var result = await Task.Run(
