@@ -117,11 +117,12 @@
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_ChangeAccountID_AbstractAccountApi_IAccount_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.ChangeAccountID(AbstractAccountApi.IAccount)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L215">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L247">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_ChangeAccountID_" data-uid="SmartschoolApi.Accounts.ChangeAccountID*"></a>
   <h4 id="SmartschoolApi_Accounts_ChangeAccountID_AbstractAccountApi_IAccount_" data-uid="SmartschoolApi.Accounts.ChangeAccountID(AbstractAccountApi.IAccount)">ChangeAccountID(IAccount)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Change the account holder&apos;s internal number (Account ID). This is done by refering to the UID (login name).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -140,7 +141,8 @@
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -155,7 +157,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -164,11 +167,12 @@
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_ChangeUID_AbstractAccountApi_IAccount_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.ChangeUID(AbstractAccountApi.IAccount)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L199">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L226">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_ChangeUID_" data-uid="SmartschoolApi.Accounts.ChangeUID*"></a>
   <h4 id="SmartschoolApi_Accounts_ChangeUID_AbstractAccountApi_IAccount_" data-uid="SmartschoolApi.Accounts.ChangeUID(AbstractAccountApi.IAccount)">ChangeUID(IAccount)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Change the account holder&apos;s login name(UID). This is done by refering to the AccountID (smartschool internal number) </p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -187,7 +191,8 @@
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -202,7 +207,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -211,11 +217,13 @@
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_Delete_AbstractAccountApi_IAccount_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.Delete(AbstractAccountApi.IAccount)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L303">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L352">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_Delete_" data-uid="SmartschoolApi.Accounts.Delete*"></a>
   <h4 id="SmartschoolApi_Accounts_Delete_AbstractAccountApi_IAccount_" data-uid="SmartschoolApi.Accounts.Delete(AbstractAccountApi.IAccount)">Delete(IAccount)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Delete an account. Important: if the account is assigned to an official class, the official
+date of this change should be provided with the overloaded version of this method.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -234,7 +242,8 @@
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -249,7 +258,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -258,11 +268,12 @@
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_Delete_AbstractAccountApi_IAccount_System_DateTime_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.Delete(AbstractAccountApi.IAccount%2CSystem.DateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L308">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L363">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_Delete_" data-uid="SmartschoolApi.Accounts.Delete*"></a>
   <h4 id="SmartschoolApi_Accounts_Delete_AbstractAccountApi_IAccount_System_DateTime_" data-uid="SmartschoolApi.Accounts.Delete(AbstractAccountApi.IAccount,System.DateTime)">Delete(IAccount, DateTime)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Delete a (student) account assigned to an official class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -281,12 +292,14 @@
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">dateOfChange</span></td>
-        <td></td>
+        <td><p>The official date of this change.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -301,7 +314,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -310,11 +324,12 @@
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_ForcePasswordReset_AbstractAccountApi_IAccount_AbstractAccountApi_AccountType_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.ForcePasswordReset(AbstractAccountApi.IAccount%2CAbstractAccountApi.AccountType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L166">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L181">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_ForcePasswordReset_" data-uid="SmartschoolApi.Accounts.ForcePasswordReset*"></a>
   <h4 id="SmartschoolApi_Accounts_ForcePasswordReset_AbstractAccountApi_IAccount_AbstractAccountApi_AccountType_" data-uid="SmartschoolApi.Accounts.ForcePasswordReset(AbstractAccountApi.IAccount,AbstractAccountApi.AccountType)">ForcePasswordReset(IAccount, AccountType)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Forces the user (or co-account holder) to change their password next time they log in.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -333,12 +348,14 @@
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">AbstractAccountApi.AccountType</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>The account type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -353,7 +370,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -362,11 +380,12 @@
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_GetStatus_AbstractAccountApi_IAccount_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.GetStatus(AbstractAccountApi.IAccount)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L264">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L307">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_GetStatus_" data-uid="SmartschoolApi.Accounts.GetStatus*"></a>
   <h4 id="SmartschoolApi_Accounts_GetStatus_AbstractAccountApi_IAccount_" data-uid="SmartschoolApi.Accounts.GetStatus(AbstractAccountApi.IAccount)">GetStatus(IAccount)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the current account state of the account.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -385,7 +404,8 @@
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -400,7 +420,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">AbstractAccountApi.AccountState</span>&gt;</td>
-        <td></td>
+        <td><p>The current account state</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -460,11 +481,12 @@ All other values will be overwritten.</p>
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_LoadAccounts_AbstractAccountApi_IGroup_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.LoadAccounts(AbstractAccountApi.IGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L130">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L135">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_LoadAccounts_" data-uid="SmartschoolApi.Accounts.LoadAccounts*"></a>
   <h4 id="SmartschoolApi_Accounts_LoadAccounts_AbstractAccountApi_IGroup_" data-uid="SmartschoolApi.Accounts.LoadAccounts(AbstractAccountApi.IGroup)">LoadAccounts(IGroup)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Loads all the accounts linked to this group</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -483,7 +505,8 @@ All other values will be overwritten.</p>
       <tr>
         <td><span class="xref">AbstractAccountApi.IGroup</span></td>
         <td><span class="parametername">group</span></td>
-        <td></td>
+        <td><p>The group for which to load accounts.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -498,7 +521,8 @@ All other values will be overwritten.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
+        <td><p>awaitable</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -577,11 +601,12 @@ user update.</p>
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_SetPassword_AbstractAccountApi_IAccount_System_String_AbstractAccountApi_AccountType_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.SetPassword(AbstractAccountApi.IAccount%2CSystem.String%2CAbstractAccountApi.AccountType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L150">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L159">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_SetPassword_" data-uid="SmartschoolApi.Accounts.SetPassword*"></a>
   <h4 id="SmartschoolApi_Accounts_SetPassword_AbstractAccountApi_IAccount_System_String_AbstractAccountApi_AccountType_" data-uid="SmartschoolApi.Accounts.SetPassword(AbstractAccountApi.IAccount,System.String,AbstractAccountApi.AccountType)">SetPassword(IAccount, String, AccountType)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets a new password for this account. Please note that smartschool will require users to pick another password once they&apos;ve signed in.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -600,17 +625,20 @@ user update.</p>
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The account for which to change the password.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">password</span></td>
-        <td></td>
+        <td><p>The new password.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">AbstractAccountApi.AccountType</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>The account type. This can be the main account, or one of the co-accounts.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -634,11 +662,12 @@ user update.</p>
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_SetStatus_AbstractAccountApi_IAccount_AbstractAccountApi_AccountState_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.SetStatus(AbstractAccountApi.IAccount%2CAbstractAccountApi.AccountState)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L231">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L269">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_SetStatus_" data-uid="SmartschoolApi.Accounts.SetStatus*"></a>
   <h4 id="SmartschoolApi_Accounts_SetStatus_AbstractAccountApi_IAccount_AbstractAccountApi_AccountState_" data-uid="SmartschoolApi.Accounts.SetStatus(AbstractAccountApi.IAccount,AbstractAccountApi.AccountState)">SetStatus(IAccount, AccountState)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Change the status of an account. The status can be active, inactive and administrative.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -657,12 +686,14 @@ user update.</p>
       <tr>
         <td><span class="xref">AbstractAccountApi.IAccount</span></td>
         <td><span class="parametername">account</span></td>
-        <td></td>
+        <td><p>The target account</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">AbstractAccountApi.AccountState</span></td>
         <td><span class="parametername">state</span></td>
-        <td></td>
+        <td><p>The desired state</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -677,7 +708,8 @@ user update.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -686,11 +718,13 @@ user update.</p>
     <a href="https://github.com/arcadiascholen/SmartschoolApi/new/master/apiSpec/new?filename=SmartschoolApi_Accounts_UnregisterStudent_AbstractAccountApi_IAccount_System_DateTime_.md&amp;value=---%0Auid%3A%20SmartschoolApi.Accounts.UnregisterStudent(AbstractAccountApi.IAccount%2CSystem.DateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L182">View Source</a>
+    <a href="https://github.com/arcadiascholen/SmartschoolApi/blob/master/SmartschoolApi/Accounts.cs/#L204">View Source</a>
   </span>
   <a id="SmartschoolApi_Accounts_UnregisterStudent_" data-uid="SmartschoolApi.Accounts.UnregisterStudent*"></a>
   <h4 id="SmartschoolApi_Accounts_UnregisterStudent_AbstractAccountApi_IAccount_System_DateTime_" data-uid="SmartschoolApi.Accounts.UnregisterStudent(AbstractAccountApi.IAccount,System.DateTime)">UnregisterStudent(IAccount, DateTime)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Unregisters a student from smartschool. This does not delete the account but officially
+deactivates it. Should be used when students leave the school during the year.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -729,7 +763,8 @@ user update.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>awaitable true/false result</p>
+</td>
       </tr>
     </tbody>
   </table>
