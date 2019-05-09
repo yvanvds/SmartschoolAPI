@@ -13,6 +13,25 @@ references:
   commentId: T:SmartschoolApi.Account
   fullName: SmartschoolApi.Account
   nameWithType: Account
+- uid: SmartschoolApi.Account.#ctor
+  name: Account()
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account__ctor
+  commentId: M:SmartschoolApi.Account.#ctor
+  fullName: SmartschoolApi.Account.Account()
+  nameWithType: Account.Account()
+- uid: SmartschoolApi.Account.#ctor(Newtonsoft.Json.Linq.JObject)
+  name: Account(JObject)
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account__ctor_Newtonsoft_Json_Linq_JObject_
+  commentId: M:SmartschoolApi.Account.#ctor(Newtonsoft.Json.Linq.JObject)
+  fullName: SmartschoolApi.Account.Account(Newtonsoft.Json.Linq.JObject)
+  nameWithType: Account.Account(JObject)
+- uid: SmartschoolApi.Account.#ctor*
+  name: Account
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account__ctor_
+  commentId: Overload:SmartschoolApi.Account.#ctor
+  isSpec: "True"
+  fullName: SmartschoolApi.Account.Account
+  nameWithType: Account.Account
 - uid: SmartschoolApi.Account.AccountID
   name: AccountID
   href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_AccountID
@@ -91,6 +110,19 @@ references:
   isSpec: "True"
   fullName: SmartschoolApi.Account.Country
   nameWithType: Account.Country
+- uid: SmartschoolApi.Account.Equals(AbstractAccountApi.IAccount)
+  name: Equals(IAccount)
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_Equals_AbstractAccountApi_IAccount_
+  commentId: M:SmartschoolApi.Account.Equals(AbstractAccountApi.IAccount)
+  fullName: SmartschoolApi.Account.Equals(AbstractAccountApi.IAccount)
+  nameWithType: Account.Equals(IAccount)
+- uid: SmartschoolApi.Account.Equals*
+  name: Equals
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_Equals_
+  commentId: Overload:SmartschoolApi.Account.Equals
+  isSpec: "True"
+  fullName: SmartschoolApi.Account.Equals
+  nameWithType: Account.Equals
 - uid: SmartschoolApi.Account.ExtraNames
   name: ExtraNames
   href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_ExtraNames
@@ -325,6 +357,19 @@ references:
   isSpec: "True"
   fullName: SmartschoolApi.Account.SurName
   nameWithType: Account.SurName
+- uid: SmartschoolApi.Account.ToJson
+  name: ToJson()
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_ToJson
+  commentId: M:SmartschoolApi.Account.ToJson
+  fullName: SmartschoolApi.Account.ToJson()
+  nameWithType: Account.ToJson()
+- uid: SmartschoolApi.Account.ToJson*
+  name: ToJson
+  href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_ToJson_
+  commentId: Overload:SmartschoolApi.Account.ToJson
+  isSpec: "True"
+  fullName: SmartschoolApi.Account.ToJson
+  nameWithType: Account.ToJson
 - uid: SmartschoolApi.Account.UID
   name: UID
   href: api/SmartschoolApi.Account.html#SmartschoolApi_Account_UID
@@ -711,12 +756,12 @@ references:
   isSpec: "True"
   fullName: SmartschoolApi.Group.Description
   nameWithType: Group.Description
-- uid: SmartschoolApi.Group.Equals(AbstractAccountApi.IGroup,System.Boolean)
-  name: Equals(IGroup, Boolean)
-  href: api/SmartschoolApi.Group.html#SmartschoolApi_Group_Equals_AbstractAccountApi_IGroup_System_Boolean_
-  commentId: M:SmartschoolApi.Group.Equals(AbstractAccountApi.IGroup,System.Boolean)
-  fullName: SmartschoolApi.Group.Equals(AbstractAccountApi.IGroup, System.Boolean)
-  nameWithType: Group.Equals(IGroup, Boolean)
+- uid: SmartschoolApi.Group.Equals(AbstractAccountApi.IGroup,System.Boolean,System.Boolean)
+  name: Equals(IGroup, Boolean, Boolean)
+  href: api/SmartschoolApi.Group.html#SmartschoolApi_Group_Equals_AbstractAccountApi_IGroup_System_Boolean_System_Boolean_
+  commentId: M:SmartschoolApi.Group.Equals(AbstractAccountApi.IGroup,System.Boolean,System.Boolean)
+  fullName: SmartschoolApi.Group.Equals(AbstractAccountApi.IGroup, System.Boolean, System.Boolean)
+  nameWithType: Group.Equals(IGroup, Boolean, Boolean)
 - uid: SmartschoolApi.Group.Equals*
   name: Equals
   href: api/SmartschoolApi.Group.html#SmartschoolApi_Group_Equals_
@@ -857,12 +902,12 @@ references:
   isSpec: "True"
   fullName: SmartschoolApi.Group.Titulars
   nameWithType: Group.Titulars
-- uid: SmartschoolApi.Group.ToJson
-  name: ToJson()
-  href: api/SmartschoolApi.Group.html#SmartschoolApi_Group_ToJson
-  commentId: M:SmartschoolApi.Group.ToJson
-  fullName: SmartschoolApi.Group.ToJson()
-  nameWithType: Group.ToJson()
+- uid: SmartschoolApi.Group.ToJson(System.Boolean)
+  name: ToJson(Boolean)
+  href: api/SmartschoolApi.Group.html#SmartschoolApi_Group_ToJson_System_Boolean_
+  commentId: M:SmartschoolApi.Group.ToJson(System.Boolean)
+  fullName: SmartschoolApi.Group.ToJson(System.Boolean)
+  nameWithType: Group.ToJson(Boolean)
 - uid: SmartschoolApi.Group.ToJson*
   name: ToJson
   href: api/SmartschoolApi.Group.html#SmartschoolApi_Group_ToJson_

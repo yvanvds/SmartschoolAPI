@@ -288,7 +288,7 @@ namespace SmartschoolApi
         /// Create a JSON JObject from this group.
         /// </summary>
         /// <returns>The new JObject</returns>
-        public JObject ToJson()
+        public JObject ToJson(bool includeAccounts)
         {
             JObject result = new JObject();
 
@@ -302,12 +302,22 @@ namespace SmartschoolApi
             result["InstituteNumber"] = InstituteNumber;
             result["AdminNumber"] = AdminNumber;
 
+            if(includeAccounts && Accounts != null)
+            {
+                var accounts = new JArray();
+                foreach(var account in Accounts)
+                {
+                    accounts.Add(account.ToJson());
+                }
+                result["Accounts"] = accounts;
+            }
+
             if(Children != null)
             {
                 var children = new JArray();
                 foreach (var child in Children)
                 {
-                    children.Add(child.ToJson());
+                    children.Add(child.ToJson(includeAccounts));
                 }
                 result["Children"] = children;
             }
@@ -339,6 +349,16 @@ namespace SmartschoolApi
             InstituteNumber = obj["InstituteNumber"].ToString();
             AdminNumber = Convert.ToInt32(obj["AdminNumber"]);
 
+            if(obj.ContainsKey("Accounts"))
+            {
+                Accounts = new List<IAccount>();
+                var arr = obj["Accounts"].ToArray();
+                foreach(var account in arr)
+                {
+                    Accounts.Add(new Account(account as JObject));
+                }
+            }
+
             if(obj.ContainsKey("Children"))
             {
                 Children = new List<IGroup>();
@@ -356,7 +376,7 @@ namespace SmartschoolApi
         /// <param name="other">The Other group</param>
         /// <param name="recursive">Also check child groups</param>
         /// <returns>True if equal.</returns>
-        public bool Equals(IGroup other, bool recursive)
+        public bool Equals(IGroup other, bool recursive, bool includeAccounts)
         {
             if (!Name.Equals(other.Name))
             {
@@ -404,6 +424,39 @@ namespace SmartschoolApi
                 return false;
             }
 
+            if(includeAccounts)
+            {
+                if(Accounts == null && other.Accounts != null)
+                {
+                    Error.AddMessage("Group " + Name + " Accounts is null");
+                    return false;
+                }
+
+                if(Accounts != null && other.Accounts == null)
+                {
+                    Error.AddMessage("Group " + Name + " other accounts is null");
+                    return false;
+                }
+
+                if(Accounts != null && other.Accounts != null)
+                {
+                    if(Accounts.Count != other.Accounts.Count)
+                    {
+                        Error.AddMessage("Group " + Name + " has " + Accounts.Count + " accounts and other has " + other.Accounts.Count);
+                        return false;
+                    }
+
+                    for (int i = 0; i < Accounts.Count; i++)
+                    {
+                        if (!Accounts[i].Equals(other.Accounts[i]))
+                        {
+                            Error.AddMessage("Group " + Name + " is different");
+                            return false;
+                        }
+                    }
+                }
+            }
+
             // if not recursive, we're done here
             if (!recursive) return true;
 
@@ -427,7 +480,7 @@ namespace SmartschoolApi
 
             for(int i = 0; i < Children.Count; i++)
             {
-                if (!Children[i].Equals(other.Children[i], true))
+                if (!Children[i].Equals(other.Children[i], true, includeAccounts))
                 {
                     Error.AddMessage("Child Group " + Name + " is different");
                     return false;

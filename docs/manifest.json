@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SmartschoolApi.Account.html",
-          "hash": "MT5La8ozXNoISZuz4OncQQ=="
+          "hash": "gxaUkmQFYz8JlMVoPMPPAQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "yeFYENCxA7382BUu0O5SUg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SmartschoolApi.Group.html",
-          "hash": "W837W4TtZl1RBcrte+oyfg=="
+          "hash": "L+XfE8PfutgJHKznBn3o6w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1476,7 +1476,7 @@
           "hash": "aKKhyN1lkXIB42J4ZEhM2w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1488,7 +1488,7 @@
           "hash": "Pij1uXTvK4jcUQ7yxJ2s0Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1532,17 +1532,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 120,
+          "skipped_file_count": 120
+        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 120,
-          "skipped_file_count": 116
         }
       }
     },

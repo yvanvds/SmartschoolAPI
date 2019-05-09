@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using AbstractAccountApi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -161,6 +162,26 @@ namespace SmartSchoolTests
 
             await Accounts.LoadAccounts(students);
             Assert.IsTrue(students.NumAccounts() > 50);
+        }
+
+        [TestMethod]
+        public async Task TestJSon()
+        {
+            await GroupManager.Load();
+
+            IGroup personnel = GroupManager.Root.Find("Secretariaat");
+
+            await Accounts.LoadAccounts(personnel);
+            var obj = personnel.ToJson(true);
+            File.WriteAllText("SmartschoolGroupsAndAccounts.json", obj.ToString());
+
+            Assert.IsTrue(File.Exists("SmartschoolGroupsAndAccounts.json"), "json file does not exist");
+
+            string content = File.ReadAllText("SmartschoolGroupsAndAccounts.json");
+            var newObj = Newtonsoft.Json.Linq.JObject.Parse(content);
+            var newGroup = new Group(null, newObj);
+
+            Assert.IsTrue(newGroup.Equals(personnel, true, true));
         }
     }
 }

@@ -389,7 +389,7 @@ namespace SmartschoolApi
         internal static void LoadFromJSON(IAccount account, JSONAccount json)
         {
             account.UID = json.gebruikersnaam;
-            account.AccountID = json.internnummer;
+            account.AccountID = json.internnummer != null ? json.internnummer : "";
             account.RegisterID = json.rijksregisternummer;
 
             if (json.basisrol == "1")
@@ -432,6 +432,7 @@ namespace SmartschoolApi
             account.HouseNumberAdd = json.busnummer;
             account.PostalCode = json.postcode;
             account.City = json.woonplaats;
+            account.Country = json.land;
 
             account.MobilePhone = json.mobielnummer;
             account.HomePhone = json.telefoonnummer;

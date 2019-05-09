@@ -108,7 +108,7 @@ namespace SmartSchoolTests
         {
             await GroupManager.Load();
             Assert.IsNotNull(GroupManager.Root, "Group Root should not be null");
-            var obj = GroupManager.Root.ToJson();
+            var obj = GroupManager.Root.ToJson(false);
             File.WriteAllText("SmartschoolGroups.json", obj.ToString());
 
             Assert.IsTrue(File.Exists("SmartschoolGroups.json"), "json file does not exist");
@@ -117,7 +117,7 @@ namespace SmartSchoolTests
             var newObj = Newtonsoft.Json.Linq.JObject.Parse(content);
             var newGroups = new Group(null, newObj);
 
-            Assert.IsTrue(newGroups.Equals(GroupManager.Root, true), "The group tree is not the same");
+            Assert.IsTrue(newGroups.Equals(GroupManager.Root, true, false), "The group tree is not the same");
         }
     }
 }
