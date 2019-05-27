@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SmartschoolApi.Group.html",
-          "hash": "L+XfE8PfutgJHKznBn3o6w=="
+          "hash": "Th4oKNgToT+1VeZZbdWGzQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,7 +105,55 @@
       "output": {
         ".html": {
           "relative_path": "api/SmartschoolApi.GroupManager.html",
-          "hash": "wSv9zFXfR/9o50ERZiBNPg=="
+          "hash": "F/i4GNhlaATWG791QENoxQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Rules.DiscardGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Rules.DiscardGroup.html",
+          "hash": "4jBcPBZocBKCYy8bo5msGQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Rules.NoSubGroups.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Rules.NoSubGroups.html",
+          "hash": "7uR3BRdkzKhgdhAAkFESlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Rules.Rules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Rules.Rules.html",
+          "hash": "0vPoK9IBSV8tJ39QXSW0cQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SmartschoolApi.Rules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SmartschoolApi.Rules.html",
+          "hash": "VyprMrRrE6rinaX90nTBcA=="
         }
       },
       "is_incremental": true,
@@ -1488,7 +1536,7 @@
           "hash": "Pij1uXTvK4jcUQ7yxJ2s0Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1497,7 +1545,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "ABZO87FI5XGvtAoZFPmMOw=="
+          "hash": "aShX+QjVaZKcAB1rLarlwA=="
         }
       },
       "is_incremental": false,
@@ -1525,24 +1573,24 @@
         "skipped_file_count": 0
       },
       "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 124,
+          "skipped_file_count": 123
+        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 120,
-          "skipped_file_count": 120
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 3
         }
       }
     },

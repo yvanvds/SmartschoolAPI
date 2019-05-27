@@ -75,7 +75,7 @@ namespace SmartschoolApi
         {
             if (Connector.log != null)
             {
-                Connector.log.AddError("Smartschool Error: " + error);
+                Connector.log.AddError(AbstractAccountApi.Origin.Smartschool, error);
             }
         }
 
@@ -87,7 +87,7 @@ namespace SmartschoolApi
         {
             if (Connector.log != null)
             {
-                Connector.log.AddError("Smartschool Message: " + message);
+                Connector.log.AddMessage(AbstractAccountApi.Origin.Smartschool, message);
             }
         }
     }

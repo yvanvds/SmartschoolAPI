@@ -1,4 +1,5 @@
 ﻿using AbstractAccountApi;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +17,7 @@ namespace SmartschoolApi
     /// </summary>
     public static class GroupManager
     {
-        private static IGroup root;
+        private static IGroup root = new Group(null);
         /// <summary>
         /// The root of the Group object tree. Will be null if no accounts are loaded.
         /// </summary>
@@ -152,6 +153,14 @@ namespace SmartschoolApi
             if (root != null) Root.Sort();
         }
 
+        public static void ApplyImportRules(List<IRule> rules)
+        {
+            if(Root != null)
+            {
+
+            }
+        }
+
         /// <summary>
         /// Tries to determine what the logical parent should be for a class group. This
         /// works by evaluating the first character in the provided string, which should be a 
@@ -280,7 +289,7 @@ namespace SmartschoolApi
         {
             if (group.Type != GroupType.Class || !group.Official)
             {
-                Connector.log.AddError("Smartschool Groups API: You can only move users to official classes");
+                Connector.log.AddError(Origin.Smartschool, "Groups API: You can only move users to official classes");
                 return false;
             }
             var result = await Task.Run(() => Connector.service.saveUserToClass(
@@ -310,7 +319,7 @@ namespace SmartschoolApi
         {
             if (group.Official)
             {
-                Connector.log.AddError("Smartschool Groups API: Users cannot be added to official classes. Use the MoveUserToClass method instead.");
+                Connector.log.AddError(Origin.Smartschool, "Groups API: Users cannot be added to official classes. Use the MoveUserToClass method instead.");
                 return false;
             }
             var result = await Task.Run(() => Connector.service.saveUserToClassesAndGroups(
@@ -339,7 +348,7 @@ namespace SmartschoolApi
         {
             if (group.Official)
             {
-                Connector.log.AddError("Smartschool Groups API: Users cannot be removed from official classes.");
+                Connector.log.AddError(Origin.Smartschool, "Groups API: Users cannot be removed from official classes.");
                 return false;
             }
 
@@ -357,6 +366,23 @@ namespace SmartschoolApi
                 return false;
             }
             return true;
+        }
+
+        public static JObject ToJson(bool includeAccounts)
+        {
+            JObject result = null;
+            if(Root != null)
+            {
+                result = Root.ToJson(includeAccounts);
+            }
+            return result;
+        } 
+
+        public static void FromJson(JObject obj)
+        {
+            root = new Group(null);
+            root.Children = new List<IGroup>();
+            root.Children.Add(new Group(root, obj));
         }
     }
 }

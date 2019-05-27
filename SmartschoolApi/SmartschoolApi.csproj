@@ -64,6 +64,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Rules\DiscardGroup.cs" />
+    <Compile Include="Rules\NoSubGroups.cs" />
+    <Compile Include="Rules\Rules.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Web References\SS\Reference.cs">
       <AutoGen>True</AutoGen>

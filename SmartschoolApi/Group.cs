@@ -130,6 +130,13 @@ namespace SmartschoolApi
             return null;
         }
 
+        public bool HasParent(string name)
+        {
+            if (Parent == null) return false;
+            if (Parent.Name == name) return true;
+            return Parent.HasParent(name);
+        }
+
         /// <summary>
         /// Get the number of official groups (Classes) within this group. If this group is in the 
         /// list with DiscardedSubgroups, subgroups will not be evaluated.
@@ -196,7 +203,7 @@ namespace SmartschoolApi
                     }
                     catch (Exception e)
                     {
-                        Connector.log.AddError("Smartschool API Group Error: " + e.Message + "in group " + group.Name);
+                        Connector.log.AddError(Origin.Smartschool, "Group Error: " + e.Message + "in group " + group.Name);
                     }
                 }
             }
@@ -219,6 +226,7 @@ namespace SmartschoolApi
             {
                 child.Sort();
             }
+            if (accounts != null) accounts.Sort((x, y) => x.SurName.CompareTo(y.SurName));
         }
 
         /// <summary>
@@ -281,6 +289,27 @@ namespace SmartschoolApi
             catch (Exception e)
             {
                 Error.AddError(e.Message);
+            }
+        }
+
+        public void ApplyImportRules(List<IRule> rules)
+        {
+            if (Children == null) return;
+            for(int i = Children.Count - 1; i >= 0; i--)
+            {
+                Children[i].ApplyImportRules(rules);
+
+                for(int j = 0; j < rules.Count; j++)
+                {
+                    if(rules[j].Apply(Children[i]))
+                    {
+                        if(rules[j].RuleAction == RuleAction.Discard)
+                        {
+                            Children.Remove(Children[i]);
+                            break;
+                        }
+                    }
+                }
             }
         }
 
