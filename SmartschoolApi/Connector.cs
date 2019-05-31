@@ -24,15 +24,22 @@ namespace SmartschoolApi
 
         public static void Init(string site, string password, ILog log = null)
         {
-            service = new V3Service
+            try
             {
-                Url = "https://" + site + ".smartschool.be/Webservices/V3"
-            };
+                service = new V3Service
+                {
+                    Url = "https://" + site + ".smartschool.be/Webservices/V3"
+                };
 
-            Connector.password = password;
-            Connector.log = log;
+                Connector.password = password;
+                Connector.log = log;
 
-            Error.GetCodes();
+                Error.GetCodes();
+            } catch(Exception e)
+            {
+                if (log != null) log.AddError(Origin.Smartschool, e.Message);
+            }
+            
         }
 
 
