@@ -36,7 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\AccountManager\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -100,6 +101,8 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="api\.gitignore" />
     <None Include="api\index.md" />
     <None Include="app.config" />
     <None Include="articles\intro.md" />
@@ -118,8 +121,6 @@
     <None Include="Web References\SS\V3.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
-    <Content Include="api\.gitignore" />
     <Content Include="docfx.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -129,5 +130,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\docfx.console.2.42.0\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.42.0\build\docfx.console.targets'))" />
+    <Error Condition="!Exists('..\..\AccountManager\packages\docfx.console.2.42.4\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\AccountManager\packages\docfx.console.2.42.4\build\docfx.console.targets'))" />
   </Target>
+  <Import Project="..\..\AccountManager\packages\docfx.console.2.42.4\build\docfx.console.targets" Condition="Exists('..\..\AccountManager\packages\docfx.console.2.42.4\build\docfx.console.targets')" />
 </Project>

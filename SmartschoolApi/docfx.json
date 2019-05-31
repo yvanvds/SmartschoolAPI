@@ -60,7 +60,7 @@
         ]
       }
     ],
-    "dest": "../docs",
+    "dest": "_site",
     "template": [
       "default"
     ]
