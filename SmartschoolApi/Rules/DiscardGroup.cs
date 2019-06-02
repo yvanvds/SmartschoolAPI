@@ -53,7 +53,7 @@ namespace SmartschoolApi.Rules
             description = "Zorgt er voor dat deze groep niet geimporteerd zal worden.";
         }
 
-        public void Modify()
+        public void Modify(object obj)
         {
             // not needed
         }
@@ -78,7 +78,7 @@ namespace SmartschoolApi.Rules
             return result;
         }
 
-        public bool Apply(object obj)
+        public bool ShouldApply(object obj)
         {
             if ((obj as Group).Name.Equals(groupName)) return true;
             return false;

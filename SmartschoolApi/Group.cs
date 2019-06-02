@@ -301,7 +301,7 @@ namespace SmartschoolApi
 
                 for(int j = 0; j < rules.Count; j++)
                 {
-                    if(rules[j].Apply(Children[i]))
+                    if(rules[j].ShouldApply(Children[i]))
                     {
                         if(rules[j].RuleAction == RuleAction.Discard)
                         {
